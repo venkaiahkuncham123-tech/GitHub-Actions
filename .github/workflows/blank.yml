@@ -4,9 +4,9 @@ on:
     branches:
       - main
       - master
-   pull_request:
-     branches:
-       - main
+  pull_request:
+    branches:
+      - main
 jobs:
   job1:
     runs_on: ubuntu-latest
