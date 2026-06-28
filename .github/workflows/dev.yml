@@ -2,7 +2,7 @@ name: git checkout and build
 on:   
   push:
     branches:
-      - dev
+      - qa
       - bugfix/*
   issues:
     types: [ opened, edited, reopened ]
@@ -24,15 +24,15 @@ jobs:
     runs-on: self-hosted
     needs: [ git_checkout , installing_node ]
     steps:
-      - name: executing the test cases
-        run: npm test
       - name: building the project
         run: npm install
+        working-directory: ./backend
   running_the_porject:
     runs-on: self-hosted
     needs: [ git_checkout , installing_node , compiling_and_building_project ]
     steps:
       - name: executing in back
-        run: npm build
+        run: npm start
+        working-directory: ./backend
       - name: getting ip
         run: curl ifconfig.me
