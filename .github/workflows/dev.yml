@@ -31,8 +31,10 @@ jobs:
     runs-on: self-hosted
     needs: [ git_checkout , installing_node , compiling_and_building_project ]
     steps:
-      - name: executing in back
-        run: npm start
-        working-directory: ./backend
       - name: getting ip
         run: curl ifconfig.me
+      - name: executing in back
+        working-directory: ./backend
+        run: npm start
+        
+
