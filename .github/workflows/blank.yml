@@ -8,20 +8,20 @@ on:
       - main
 jobs:
   job1:  
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: git checkout
         run: echo "git checkout"
       - name: building
         run: echo "building the project"
   job2:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: job1
     steps:
       - name: pushing to docket
         run: echo "pushed to the docker container"
   job3:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: job2
     steps:
       - name: K8S deployment
