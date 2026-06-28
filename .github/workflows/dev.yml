@@ -1,0 +1,38 @@
+name: git checkout and build
+on:   
+  push:
+    branches:
+      - dev
+      - bugfix/*
+  issues:
+    types: [ opened, edited, reopened ]
+jobs:
+  git_checkout:
+    runs-on: self-hosted
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v7
+  installing_node:
+    runs-on: self-hosted
+    needs: git_checkout
+    steps:
+      - name: installing node js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+  compiling_and_building_project:
+    runs-on: self-hosted
+    needs: [ git_checkout , installing_node ]
+    steps:
+      - name: executing the test cases
+        run: npm test
+      - name: building the project
+        run: npm install
+  running_the_porject:
+    runs-on: self-hosted
+    needs: [ git_checkout , installing_node , compiling_and_building_project ]
+    steps:
+      - name: executing in back
+        run: npm build
+      - name: getting ip
+        run: curl ifconfig.me
