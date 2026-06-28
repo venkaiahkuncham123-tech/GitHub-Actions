@@ -1,0 +1,29 @@
+name: Java Project
+on:
+  push:
+    branches:
+      - main
+      - master
+   pull_reqeusts:
+     branches:
+       - main
+jobs:
+  job1:
+    runs_on: ubuntu-latest
+  steps:
+    - name : building
+      run: echo "Building the project"
+  job2:
+    runs_on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: deploying
+        run: echo "project depoyed"
+      - name: k8s
+        run: echo "K8s Deployment"
+  job3:
+    runs_on: ubuntu-latest
+    needs: job2
+    steps:
+      name: grafana
+      run: echo "grafana"
