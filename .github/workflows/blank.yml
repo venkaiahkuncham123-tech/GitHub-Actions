@@ -1,8 +1,5 @@
 name: Smaple GitHub Actions
 on:
-  pull_request:
-    branches: 
-      - main
 jobs:
   job1:  
     runs-on: self-hosted
