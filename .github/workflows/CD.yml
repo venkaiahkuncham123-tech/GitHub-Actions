@@ -1,11 +1,13 @@
 name: downsream-job
 on:
   push:
-    branches: [main]
+    branches: 
+      - main
   workflow_run:
      workflows:
        - upstrea-downstream-job
-     types: [completed]
+     types: 
+       - completed
   workflow_dispatch:
 jobs:
   deployment_job:
@@ -18,3 +20,9 @@ jobs:
         echo "Upstream Job is Completed"
         echo "Downstream Job is Running"
         echo "Downstream Job is Completed"
+  calling_another_job:
+    runs-on: ubuntu-latest
+    needs: deployment_job
+    steps:
+      - name: Job status
+        run : echo "Job is completed"
