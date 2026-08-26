@@ -1,0 +1,14 @@
+name: upstrea-downstream-job
+on:
+  push:
+    branches:
+       - main
+  workflow_dispatch:
+jobs:
+   build_job:
+      runs-on: ubuntu-latest
+      steps:
+        - name: printing hello
+          run: echo "hello"
+        - name: Installing dependencies
+          run: apt-get update 

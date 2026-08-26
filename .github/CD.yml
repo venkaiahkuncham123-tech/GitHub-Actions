@@ -1,0 +1,18 @@
+name: downsream-job
+on:
+  workflow_run:
+     workflows:
+       - upstrea-downstream-job
+     types: [completed]
+  workflow_dispatch:
+jobs:
+  deployment_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: git checkout
+        uses: action/checkout@v7
+      - name: job status
+        run: |
+        echo "Upstream Job is Completed"
+        echo "Downstream Job is Running"
+        echo "Downstream Job is Completed"
