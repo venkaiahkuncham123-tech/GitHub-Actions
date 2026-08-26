@@ -1,4 +1,4 @@
-name: upstrea-downstream-job
+name: upstream
 on:
   workflow_dispatch:
 jobs:
