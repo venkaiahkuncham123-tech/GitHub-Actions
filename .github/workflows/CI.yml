@@ -2,7 +2,7 @@ name: upstrea-downstream-job
 on:
   push:
     branches:
-      - main
+      - dev
   workflow_dispatch:
 jobs:
    build_job:
