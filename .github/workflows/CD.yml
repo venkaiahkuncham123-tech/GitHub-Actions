@@ -5,7 +5,7 @@ on:
       - main
   workflow_run:
      workflows:
-       - upstrea-downstream-job
+       - upstream
      types: 
        - completed
   workflow_dispatch:
