@@ -1,5 +1,7 @@
 name: downsream-job
 on:
+  push:
+    branches: [main]
   workflow_run:
      workflows:
        - upstrea-downstream-job
